@@ -1,6 +1,53 @@
 # Gopa-client
 
-This project is initialized with [Ant Design Pro](https://pro.ant.design). Follow is the quick guide for how to use.
+## 配置环境
+
+clone项目到本地
+
+```bash
+git clone git@github.com:hengqu4/gopa.git
+```
+
+切换到网站文件夹下
+
+```bash
+cd gopa && cd gopa
+```
+
+安装库依赖
+
+```bash
+yarn
+```
+
+## 启动项目
+
+在`config\proxy.ts`中设置后端环境
+
+```ts
+export default {
+  dev: {
+    // localhost:8000/api/** -> https://backend/**
+    '/api/': {
+      // 要代理的地址(后端运行环境，本地or远程均可)
+      target: 'https://backend/',
+        
+      // 配置了这个可以从 http 代理到 https
+      // 依赖 origin 的功能可能需要这个，比如 cookie
+      changeOrigin: true,
+      pathRewrite: { '^': '' },
+    },
+  },
+}
+```
+
+启动项目，应用dev环境
+
+```bash
+yarn start:dev
+```
+
+
 
 ## 获取用户信息
 
@@ -47,13 +94,24 @@ export default Group;
 
 #### 页标签logo
 
-`\src\pages\ducument.ejs`
-
-
-
 <img src="README.assets/image-20211129104414432.png" alt="image-20211129104414432" style="zoom:80%;" />
 
+`\src\pages\ducument.ejs`
+
+```ejs
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" href="<%= context.config.publicPath +'logo.svg'%>" type="image/x-icon" />
+</head>
+```
+
+
+
 #### 登录页logo
+
+<img src="README.assets/image-20211129111038686.png" alt="image-20211129111038686" style="zoom:50%;" />
 
 `\src\pages\Login\index.tsx`
 
@@ -78,6 +136,8 @@ const logo = '/logo.svg';
 
 
 #### menu logo
+
+![image-20211129111207056](README.assets/image-20211129111207056.png)
 
 `\config\defaultSetting.ts`
 
