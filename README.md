@@ -82,7 +82,9 @@ const Group: React.FC = () => {
 export default Group;
 ```
 
+## Form
 
+在`src\pages\Group\index.tsx`中写了`<Form/>`组件示例
 
 ## 网站logo,title
 
